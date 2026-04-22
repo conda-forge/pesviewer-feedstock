@@ -12,17 +12,17 @@ source:
 build:
     noarch: python
     script: {{ PYTHON }} -m pip install . -vv
-    number: 0
+    number: 1
     entry_points:
         - pesviewer = pesviewer.pesviewer:main
 
 requirements:
     host:
-        - python >=3.8
+        - python {{ python_min }}
         - pip
         - setuptools
     run:
-        - python >=3.8
+        - python >={{ python_min }}
         - numpy >=1.19.0
         - matplotlib-base
         - networkx
@@ -39,6 +39,7 @@ test:
         - pip check
     requires:
         - pip
+        - python {{ python_min }}
        
 about:
     home: https://github.com/zadorlab/PESViewer
